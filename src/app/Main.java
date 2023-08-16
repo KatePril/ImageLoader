@@ -1,17 +1,19 @@
 package app;
 
-import app.formats.JPG;
-import app.formats.PNG;
-
 public class Main {
     public static void main(String[] args) {
-        PNG png = new PNG();
-        JPG jpg = new JPG();
 
-        Image image_one = new Image("flowers", png);
-        Adapter.getOutput(image_one);
+        Image imageOne = Adapter.createImage("flowers", "png");
+        getOutput(imageOne);
 
-        Image image_two = new Image("mountains", jpg);
-        Adapter.getOutput(image_two);
+        Image imageTwo = Adapter.createImage("mountains", "jpg");
+        getOutput(imageTwo);
+
+        Image imageThree = Adapter.createImage("sky", "jpeg");
+    }
+
+    public static void getOutput(Image image) {
+        String output = "Format of the image: %s%nName of the image: %s%n%n";
+        System.out.printf(output, image.getFormat().getName(), image);
     }
 }
